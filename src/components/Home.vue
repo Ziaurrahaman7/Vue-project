@@ -1,6 +1,7 @@
 <script>
 import Banner from '../components/Banner.vue'
-
+// import Test from '../components/Test.vue'
+import SmallBanar from '../components/SmallBanar.vue'
 export default ({
    components: {
     Banner
@@ -12,27 +13,11 @@ export default ({
           <main class="main-content">
             <!--== Start Hero Area Wrapper ==-->
             <Banner/> 
+            <!-- <Test/> -->
             <!--== End Hero Area Wrapper ==-->
 
             <!--== Start Product Banner Area Wrapper ==-->
-            <section class="product-banner-area section-top-space">
-                <div class="container">
-                    <div class="swiper banner-slider-container">
-                        <div class="swiper-wrapper">
-                            <a href="shop.html" class="swiper-slide product-banner-item">
-                                <img class="icon" src="https://htmldemo.net/merier/merier/assets/images/shop/banner/01.png" width="370" height="294" alt="Image-HasTech">
-                            </a>
-                            <a href="shop.html" class="swiper-slide product-banner-item">
-                                <img class="icon" src="https://htmldemo.net/merier/merier/assets/images/shop/banner/02.png" width="370" height="294" alt="Image-HasTech">
-                            </a>
-                            <a href="shop.html" class="swiper-slide product-banner-item">
-                                <img class="icon" src="https://htmldemo.net/merier/merier/assets/images/shop/banner/03.png" width="370" height="294" alt="Image-HasTech">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <h6 class="visually-hidden">Banner Section</h6>
-            </section>
+            <SmallBanar/>
             <!--== End Product Banner Area Wrapper ==-->
 
             <!--== Start Product Area Wrapper ==-->
