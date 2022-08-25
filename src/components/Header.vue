@@ -1,106 +1,58 @@
 <script>
 import logo from '../assets/image/logo.webp'
+import axios from 'axios'
 export default{
-    data() {
-        return {
-            logo: logo,
-            items: [
-        {
-          name: "Home",
-          menu: [{ name: "Home 1"}, {name: "Home 2"}, {name: "Home 3"}]
-        },
-        {
-          name: "Blog",
-          menu: [{ name: "Blog 1"}, {name: "Blog 2"}, {name: "Blog 3"}]
-        },
-         {
-          name: "Shop",
-          menu: [{ name: "Shop 1"}, {name: "Shop 2"}, {name: "Shop 3"}]
+     data(){
+       return {
+        logo:logo,
+        items: [],
+       }
+    },
+    methods:{
+        loadCategory(){
+            axios.get('http://127.0.0.1:8000/api/apicategory').then(response=>{
+                this.items=response.data
+            })
         }
-      ]
-           
-        }
+    },
+    mounted(){
+        this.loadCategory()
     }
 }
 </script>
+<style scoped>
+.main_menu{
+    margin-left: 0px;
+}
+.header-search-box{
+    margin-right:8px;
+}
+</style>
 <template>
         <!--== Start Header Wrapper ==-->
         <header class="header-area">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
+                    <div class="col-3">
                         <div class="header-logo">
                             <a href="index.html">
                                 <img class="logo-main" :src="logo" width="153" height="30" alt="Logo">
                             </a>
                         </div>
                     </div>
-                    <div class="col-auto d-none d-lg-block">
+                    <div class="col-6 d-none d-lg-block">
                         <div class="header-navigation">
                             <ul class="main-nav">
-                                <li v-for="category in  items" :key="category.name" class="has-submenu"><a href="#">{{category.name}}</a>
+                                <li v-for="category in  items.data" :key="category.title" class="has-submenu main_menu"><a href="#">{{category.title}}</a>
                                     <ul class="submenu-nav">
-                                        <li  v-for="subcat in category.menu " :key="subcat.name" ><a href="#">{{subcat.name}}</a></li>
+                                        <!-- <li  v-for="subcat in category.menu " :key="subcat.name" ><a href="#">{{subcat.name}}</a></li> -->
                                         <!-- <li><a href="index-two.html">Home Two</a></li> -->
                                     </ul>
                                 </li>
-                                <!-- <li class="has-submenu"><a href="index.html">Home</a>
-                                    <ul class="submenu-nav">
-                                        <li><a href="index.html">Home One</a></li>
-                                        <li><a href="index-two.html">Home Two</a></li>
-                                    </ul>
-                                </li> -->
-                                <!-- <li class="has-submenu position-static"><a href="shop.html">Shop</a>
-                                    <ul class="submenu-nav-mega">
-                                        <li><a href="shop.html" class="mega-title">Shop Layout</a>
-                                            <ul>
-                                                <li><a href="shop.html">Shop 3 Column</a></li>
-                                                <li><a href="shop-four-columns.html">Shop 4 Column</a></li>
-                                                <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-single-product.html" class="mega-title">Single Product</a>
-                                            <ul>
-                                                <li><a href="shop-single-product.html">Single Product Normal</a></li>
-                                                <li><a href="shop-single-product-variable.html">Single Product Variable</a></li>
-                                                <li><a href="shop-single-product-group.html">Single Product Group</a></li>
-                                                <li><a href="shop-single-product-affiliate.html">Single Product Affiliate</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-cart.html" class="mega-title">Others Pages</a>
-                                            <ul>
-                                                <li><a href="shop-cart.html">Shopping Cart</a></li>
-                                                <li><a href="shop-checkout.html">Checkout</a></li>
-                                                <li><a href="shop-wishlist.html">Wishlist</a></li>
-                                                <li><a href="shop-compare.html">Compare</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li> -->
-                                <!-- <li class="has-submenu"><a href="about-us.html">Pages</a>
-                                    <ul class="submenu-nav">
-                                        <li><a href="about-us.html">About</a></li>
-                                        <li><a href="account.html">Account</a></li>
-                                        <li><a href="login-register.html">Login/Register</a></li>
-                                        <li><a href="page-not-found.html">Page Not Found</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </li> -->
-                                <!-- <li class="has-submenu"><a href="blog.html">Blog</a>
-                                    <ul class="submenu-nav">
-                                        <li><a href="blog.html">Blog Grid</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                        <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                        <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                    </ul>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-3">
                         <div class="header-action">
                             <form class="header-search-box d-none d-md-block">
                                 <input class="form-control" type="text" id="search" placeholder="Search">
