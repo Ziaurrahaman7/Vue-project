@@ -27,20 +27,27 @@ export default{
 .header-search-box{
     margin-right:8px;
 }
+.main_menu a{
+    padding:0px;
+    padding-top:10px;
+}
+.header-area{
+    padding-top:20px;
+}
 </style>
 <template>
         <!--== Start Header Wrapper ==-->
         <header class="header-area">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-3">
+                    <div class="col-2">
                         <div class="header-logo">
-                            <a href="index.html">
+                           <router-link to="/">
                                 <img class="logo-main" :src="logo" width="153" height="30" alt="Logo">
-                            </a>
+                           </router-link>
                         </div>
                     </div>
-                    <div class="col-6 d-none d-lg-block">
+                    <div class="col-5 d-none d-lg-block">
                         <div class="header-navigation">
                             <ul class="main-nav">
                                 <li v-for="category in  items.data" :key="category.title" class="has-submenu main_menu"><a href="#">{{category.title}}</a>
@@ -49,10 +56,12 @@ export default{
                                         <!-- <li><a href="index-two.html">Home Two</a></li> -->
                                     </ul>
                                 </li>
+                                <!-- <li class="has-submenu main_menu"><router-link to="/">Home</router-link></li> -->
+                               <!-- <li class="has-submenu main_menu"> <router-link to="/about">About</router-link></li> -->
                             </ul>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-5">
                         <div class="header-action">
                             <form class="header-search-box d-none d-md-block">
                                 <input class="form-control" type="text" id="search" placeholder="Search">
@@ -77,6 +86,7 @@ export default{
                             <button class="btn-menu d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                                 <i class="fa fa-bars"></i>
                             </button>
+                           <li class="has-submenu main_menu"> <router-link to="/login">Login</router-link></li>  
                         </div>
                     </div>
                 </div>

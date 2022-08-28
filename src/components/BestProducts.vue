@@ -50,9 +50,15 @@ export default{
     },
     methods:{
         loadProduct(){
+            //  axios.get('https://acs-m.daraz.com.bd/h5/mtop.daraz.ald.homepage.service/1.0/?jsv=2.6.1&appKey=24677475&t=1661675343777&sign=7a7837d3a2afc4f8892bce9027484233&api=mtop.daraz.ald.homepage.service&v=1.0&timeout=8000&x-i18n-language=en&x-i18n-regionID=BD&dataType=json&type=originaljson&data=%7B%22language%22%3A%22en-BD%22%2C%22regionID%22%3A%22BD%22%2C%22platform%22%3A%22pc%22%2C%22userID%22%3A%22%22%2C%22anonUID%22%3A%226b9312a8-78f2-43cc-ddef-3bdc9002777c%22%2C%22deviceID%22%3A%22%22%2C%22voyagerVersion%22%3A%222%22%2C%22pageNo%22%3A0%2C%22isbackup%22%3Atrue%2C%22backupParams%22%3A%22language%2CregionID%2Cplatform%2CpageNo%22%2C%22pcSlot%22%3A%22200%22%2C%22mobileSlot%22%3A%22200%22%2C%22appId%22%3A%222642033%22%2C%22_pvuuid%22%3A1661675335978%2C%22terminalType%22%3A1%7D').then(response=>{
+            //     this.products=response.data
+            // })
             axios.get('http://127.0.0.1:8000/api/apiproduct').then(response=>{
                 this.products=response.data
             })
+            //  axios.get('http://secure.flynovoair.com/bookings/Vues/flight_selection.aspx?DC=DAC&AC=JSR&AM=2022-09&AD=28&RM=2022-08&RD=28&TT=OW&FL=on&PA=1&PC=0&PI=0&CD=').then(response=>{
+            //     this.products=response.data
+            // })
         }
     },
     mounted(){
