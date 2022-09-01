@@ -7,7 +7,7 @@ import About from './components/About.vue'
 
 <template>
 <Header/>
-   <router-view></router-view>
+  <router-view :key="$route.path"></router-view>
  <Footer/> 
 </template>
 

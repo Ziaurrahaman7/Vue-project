@@ -33,12 +33,12 @@
                                     <p>Welcome back! Please enter your username and password to login. </p>
                                 </div>
                                 <div class="login-register-style login-register-pr">
-                                    <form action="#" method="post">
+                                    <form v-on:submit.prevent="login">
                                         <div class="login-register-input">
-                                            <input type="text" name="user-name" placeholder="Username or email address">
+                                            <input type="text" v-model="email2" name="email" placeholder="email address">
                                         </div>
                                         <div class="login-register-input">
-                                            <input type="password" name="user-password" placeholder="Password">
+                                            <input type="password" v-model="password2" name="password" placeholder="Password">
                                             <div class="forgot">
                                                 <a href="#">Forgot?</a>
                                             </div>
@@ -48,7 +48,7 @@
                                             <label>Remember me</label>
                                         </div>
                                         <div class="btn-register">
-                                            <a class="btn-register-now" href="account.html">Login</a>
+                                           <button>Login</button>
                                         </div>
                                     </form>
                                 </div>
@@ -145,7 +145,18 @@
                         console.log(err)
                     })
             },
-
+            login(){
+               axios.post('http://127.0.0.1:8000/api/login',
+               {
+                email:this.email2,
+                password:this.password2,
+               }).then((res)=>{
+                console.log(res)
+                 this.$router.push({ name: 'About'});
+               }).catch((err)=>{
+                console.log(err)
+               })
+            }
 
         }
     }

@@ -9,9 +9,9 @@
                         <div v-for="product in products.data" v-bind:key="product" class="col-sm-6 col-lg-4 mb-6">
                             <!--== Start Product Item ==-->
                             <div class="product-item product-item-border">
-                                <a v-for="pimg in product.product_image" :key="pimg" class="product-thumb" href="#">
+                                <router-link :to="'product/' + product.id" v-for="pimg in product.product_image" :key="pimg" class="product-thumb">
                                     <img :src="products.imageurl+pimg.image" width="300" height="286" alt="Image-HasTech">
-                                </a>
+                                </router-link>
                                 <span class="badges">New</span>
                                 <div class="product-action">
                                     <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
